@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { signUp } from "../utilities/users-api";
+import { signUp } from "../utilities/users-service";
 
 export default class SignupForm extends Component {
   state = {
@@ -28,7 +28,7 @@ export default class SignupForm extends Component {
       //promise returned by signUp service method
       //includes payload of JSON Web Token
       const user = await signUp(formData);
-      console.log(user);
+      this.props.setUser(user);
     } catch {
       // set error
       this.setState({ error: "Sign Up Failed. Try again!" });
