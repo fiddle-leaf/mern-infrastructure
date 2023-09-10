@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import AuthPage from "./pages/AuthPage";
+import NavBar from "./components/NavBar";
+import VacationHistory from "./pages/VacationHistory";
+import NewVacation from "./pages/NewVacation";
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {user ? (
+        <>
+          <NavBar />
+          <Routes>
+            {/* Route components in here */}
+            <Route path="/vacations/new" element={<NewVacation />} />
+            <Route path="/vacations" element={<VacationHistory />} />
+          </Routes>
+        </>
+      ) : (
+        <AuthPage />
+      )}
     </div>
   );
 }
