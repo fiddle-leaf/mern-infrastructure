@@ -31,6 +31,10 @@ app.use(express.json());
 app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "build")));
 
+// middleware to verify token
+// assigns user obj of payload to req.user
+app.use(require("./config/checkToken"));
+
 /**
  * ROUTES
  */
