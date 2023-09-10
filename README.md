@@ -11,7 +11,3 @@ User-authentication MERN-stack App skeleton
 - Page Link here
 
 ## Bugs
-
-## Future
-
-- Add to-do list instead of notes?
